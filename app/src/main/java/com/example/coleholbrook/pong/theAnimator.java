@@ -175,7 +175,7 @@ public class theAnimator implements Animator
         //Loop through for each ball in the array list
         for(Ball object : ballsList)
         {
-            //If the ball hits the left wall
+            //If the ball hits the left most wall
             if (object.xPos < 0)
             {
                 //Start moving right
