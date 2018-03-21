@@ -19,7 +19,7 @@ public class theAnimator implements Animator
     ArrayList<Ball> ballsList = new ArrayList<>();
     private int canvasHeight;  //To be used throughout the class
     private int canvasWidth;   //To be used throughout the class
-    final int ballRadius = 60; //Ball size is not changing
+    private int ballRadius = 60; //Ball size is not changing
 
     /**
      * A constructor for the theAnimator that
@@ -67,7 +67,7 @@ public class theAnimator implements Animator
         int direction = (int) (Math.random()*2);
 
         //creates the random speed
-        int mySpeed = (int) (Math.random()* 20)+20;
+        int mySpeed = (int) (Math.random()* 20)+15;
 
         //Depending on if the direction is one or not,
         //the balls direction will change.
@@ -139,13 +139,13 @@ public class theAnimator implements Animator
         //Draws the paddle on the canvas
         Paint paddlePaint = new Paint();
         paddlePaint.setColor(0xFFfa999d);
-        g.drawRect(g.getWidth()-100, 550, g.getWidth()-60, g.getHeight()-550, paddlePaint);
+        g.drawRect(canvasWidth-100, 550, canvasWidth-60, canvasHeight-550, paddlePaint);
         //Draws the paddle outline
         Paint emptyPaddle = new Paint();
         emptyPaddle.setStyle(Paint.Style.STROKE);
         emptyPaddle.setColor(0xFF000000);
         emptyPaddle.setStrokeWidth(7);
-        g.drawRect(g.getWidth()-100, 550, g.getWidth()-60, g.getHeight()-550, emptyPaddle);
+        g.drawRect(canvasWidth-100, 550, canvasWidth-60, canvasHeight-550, emptyPaddle);
 
         /**
          * External Citation
@@ -182,7 +182,7 @@ public class theAnimator implements Animator
                 object.xMov = object.xMov*(-1);
             }
             //If the ball hits the right wall
-            if ( object.xPos > g.getWidth())
+            if ( object.xPos > canvasWidth)
             {
                 //Checks to see if it was the only ball
                 if(ballsList.size() ==1)
@@ -209,14 +209,14 @@ public class theAnimator implements Animator
                 object.yMov = object.yMov*(-1);
             }
             //If the ball hits the bottom wall
-            if (object.yPos > g.getHeight())
+            if (object.yPos > canvasHeight)
             {
                 //Start moving up
                 object.yMov = object.yMov*(-1);
             }
             //If the ball hits the paddle
-            if (object.xPos >= g.getWidth() - 100 && object.xPos <= g.getWidth() - 60
-                    && object.yPos >= 550 && object.yPos <= g.getHeight() - 550)
+            if (object.xPos >= canvasWidth - 100 && object.xPos <= canvasWidth - 60
+                    && object.yPos >= 550 && object.yPos <= canvasHeight - 550 && object.yMov != 0)
             {
                 //Start moving left
                 object.xMov = object.xMov*(-1);
